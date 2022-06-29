@@ -1,6 +1,4 @@
-import React, { useCallback, useState } from 'react';
-import { useEffect } from 'react';
-import { useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 
 import Pin, { PinProps } from '../pin';
 
@@ -69,8 +67,6 @@ const UploadAndDisplayImage = () => {
         ]);
     };
 
-    const onRemoveHandler = () => setSelectedImage(undefined);
-
     useEffect(() => {
         window.addEventListener('resize', resizeHandler);
         resizeHandler();
@@ -85,7 +81,7 @@ const UploadAndDisplayImage = () => {
             <input type="file" onChange={onChangeHandler} />
             {selectedImage && (
                 <div className="img-wrapper" ref={ref}>
-                    <img src={URL.createObjectURL(selectedImage)} onClick={onClickHandler} />
+                    <img src={URL.createObjectURL(selectedImage)} onClick={onClickHandler} id="image" />
                     {pins?.map(el => (
                         <Pin
                             x={el.x}
@@ -98,7 +94,6 @@ const UploadAndDisplayImage = () => {
                     ))}
                 </div>
             )}
-            <button onClick={onRemoveHandler}>Remove</button>
         </div>
     );
 };

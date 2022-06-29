@@ -1,4 +1,18 @@
 .pin {
-  position: absolute;
-  z-index: 10001;
+    position: absolute;
+    z-index: 1001;
+    font-size: 14px;
+    pointer-events: none;
+
+}
+
+.pin-input, .pin {
+    color: red;
+    background-color: gray;
+    border: none;
+    height: 20px;
+}
+
+input:focus-visible {
+    outline: none;
 }

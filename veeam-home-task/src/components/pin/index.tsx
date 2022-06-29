@@ -14,8 +14,8 @@ export type PinProps = {
 
 const Pin: React.FC<PinProps> = ({ x, y, imageWidth, imageHeight, setBlockClick }) => {
     const [imageSizes, setImageSizes] = useState({
-        imageWidth: 0,
-        imageHeight: 0,
+        imageWidth: imageWidth,
+        imageHeight: imageHeight,
     });
     const [label, setLabel] = useState<string>();
     const [isBlur, setIsBlur] = useState(true);
@@ -36,10 +36,17 @@ const Pin: React.FC<PinProps> = ({ x, y, imageWidth, imageHeight, setBlockClick 
         setLabel(e.target.value);
     };
 
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        if (e.key === 'Enter') {
+            (e.target as HTMLInputElement).blur();
+            setBlockClick?.(false);
+        }
+    };
+
     return (
         <div style={{ left, top }} className="pin">
             {label}
-            {isBlur && <input autoFocus onBlur={blurHandler} />}
+            {isBlur && <input autoFocus onBlur={blurHandler} onKeyDown={handleKeyDown} className="pin-input" />}
         </div>
     );
 };
