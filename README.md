@@ -1,5 +1,9 @@
 # Veeam-home-task
 
+## Практическое задание
+
+Исходники - в этом репозитории. Live demo - https://sangvine.github.io/Veeam-home-task/
+
 ## Вопросы по Javascript
 
 ###### 1. Что выведет консоль? Аргументируйте свой ответ.
