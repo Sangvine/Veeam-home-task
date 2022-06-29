@@ -77,24 +77,26 @@ const UploadAndDisplayImage = () => {
     }, [imgSize, pins.length]);
 
     return (
-        <div className="container">
+        <>
             <input type="file" onChange={onChangeHandler} />
-            {selectedImage && (
-                <div className="img-wrapper" ref={ref}>
-                    <img src={URL.createObjectURL(selectedImage)} onClick={onClickHandler} id="image" />
-                    {pins?.map(el => (
-                        <Pin
-                            x={el.x}
-                            y={el.y}
-                            imageWidth={el.imageWidth}
-                            imageHeight={el.imageHeight}
-                            key={el.key}
-                            setBlockClick={setBlockClick}
-                        />
-                    ))}
-                </div>
-            )}
-        </div>
+            <div className="container">
+                {selectedImage && (
+                    <div className="img-wrapper" ref={ref}>
+                        <img src={URL.createObjectURL(selectedImage)} onClick={onClickHandler} id="image" />
+                        {pins?.map(el => (
+                            <Pin
+                                x={el.x}
+                                y={el.y}
+                                imageWidth={el.imageWidth}
+                                imageHeight={el.imageHeight}
+                                key={el.key}
+                                setBlockClick={setBlockClick}
+                            />
+                        ))}
+                    </div>
+                )}
+            </div>
+        </>
     );
 };
 
