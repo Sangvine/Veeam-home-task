@@ -52,13 +52,13 @@ const UploadAndDisplayImage = () => {
 
         var rect = (e.target as HTMLImageElement).getBoundingClientRect();
         var x = e.clientX - rect.left;
-        var y = e.clientY - rect.top - 20;
+        var y = e.clientY - rect.top;
 
         setPins([
             ...pins,
             {
                 x,
-                y: y > 0 ? y : 0,
+                y: y - 20 > 0 ? y : 0,
                 imageWidth: ref?.current?.clientWidth || 0,
                 imageHeight: ref?.current?.clientHeight || 0,
                 key: Date.now(),
